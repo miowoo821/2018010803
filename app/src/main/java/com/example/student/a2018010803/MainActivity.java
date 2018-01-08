@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         public View getView(final int i, View view, ViewGroup viewGroup) {
 //getView重要注意事項：當前畫面看到幾筆就會載入幾筆，其他的會砍掉，之後拉回來再重新載入，是為了節省資源
 //所以絕對不可在getView裡面寫需要大量執行的東西，不然會一直重複執行，
-// 比如說上網抓資料，每載入一次就抓一次一定會當機
+// 比如說上網抓資料，每載入一次就抓一次一定會當機.
             LayoutInflater inflater=LayoutInflater.from(MainActivity.this);
             View v1=inflater.inflate(R.layout.myitem,null);
             TextView tv1=v1.findViewById(R.id.textView);
