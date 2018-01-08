@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -69,8 +70,11 @@ public class MainActivity extends AppCompatActivity {
             LayoutInflater inflater=LayoutInflater.from(MainActivity.this);
             View v1=inflater.inflate(R.layout.myitem,null);
             TextView tv1=v1.findViewById(R.id.textView);
-            tv1.setText(Mylist.);
-
+            tv1.setText(Mylist.get(i).get("CITY").toString());
+            TextView tv2=v1.findViewById(R.id.textView2);
+            tv2.setText(Mylist.get(i).get("code").toString());
+            ImageView img=v1.findViewById(R.id.imageView);
+            img.setImageResource((Integer)Mylist.get(i).get("img"));
 
            /*先不用
             Button btn=(Button)findViewById(R.id.button);
