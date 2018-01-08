@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     ListView lv;
     ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習
+    boolean chks[]=new boolean[6];
 
     //String str[]={"AA","BB","CC","DD","EE"};第一個練習
 
@@ -49,6 +52,23 @@ public class MainActivity extends AppCompatActivity {
         m3.put("img",R.drawable.tn);
         Mylist.add(m3);
 
+        HashMap<String,Object> m4=new HashMap<>();
+        m4.put("CITY","台北");
+        m4.put("code","02");
+        m4.put("img",R.drawable.tp);
+        Mylist.add(m4);
+
+        HashMap<String,Object> m5=new HashMap<>();
+        m5.put("CITY","台中");
+        m5.put("code","04");
+        m5.put("img",R.drawable.tc);
+        Mylist.add(m5);
+
+        HashMap<String,Object> m6=new HashMap<>();
+        m6.put("CITY","台南");
+        m6.put("code","06");
+        m6.put("img",R.drawable.tn);
+        Mylist.add(m6);
 
 
     }
@@ -77,9 +97,19 @@ public class MainActivity extends AppCompatActivity {
             tv2.setText(Mylist.get(i).get("code").toString());
             ImageView img=v1.findViewById(R.id.imageView);
             img.setImageResource((Integer)Mylist.get(i).get("img"));
-            Button btn=v1.findViewById(R.id.button);
 
-            btn.setOnClickListener((new View.OnClickListener() {//自己練習按鈕
+            CheckBox chk=(CheckBox)v1.findViewById(R.id.checkBox);//創造Check物件
+            chk.setChecked(chks[i]);//使第[i]個物件利用01布林陣列(最上面定義的chks)來確認是否點選
+            chk.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                    chks[i]=b;//當第[i]個Checkbox被點選或取消時所得到的布林值填入chks
+                }
+            });
+
+
+            Button btn=v1.findViewById(R.id.button);//自己練習按鈕
+            btn.setOnClickListener((new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Toast.makeText(MainActivity.this, Mylist.get(i).get("CITY").toString()+Mylist.get(i).get("code").toString(), Toast.LENGTH_SHORT).show();
@@ -92,6 +122,21 @@ public class MainActivity extends AppCompatActivity {
             return v1;
         }
     }
+
+    public void click1(View v){
+        StringBuilder sb=new StringBuilder(); //StringBulider，把字串連在一起的方法，比直接+省資源
+        for(int i=0;i<chks.length;i++){//依據chks布林陣列的長度決定迴圈的次數，不能用小於等於，因為i從0開始，布林陣列長度是個數
+            if (chks[i]){//假設布林陣列裡面的第i個值為真，則取出Mylist裡面第i筆資料的KEY值為"CITY"的欄位，丟進去sb
+                    sb.append(Mylist.get(i).get("CITY")+",");//一直丟進去就會變成XX,XX,XX,.....
+            }
+        }
+        Toast.makeText(MainActivity.this,sb.toString(),Toast.LENGTH_SHORT).show();
+    }
+
+
+
+
+
 
 
 /*寫錯
