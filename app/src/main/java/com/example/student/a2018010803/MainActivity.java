@@ -21,7 +21,8 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
     ListView lv;
 ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習   //新增至Mylist.java     ,此頁依然要宣告Mylist
-//新增至Mylist.java          boolean chks[]=new boolean[6];
+ boolean chks[]=new boolean[6];//新增至Mylist.java     ,此頁依然要宣告Mylist
+
 
     //String str[]={"AA","BB","CC","DD","EE"};第一個練習
 
@@ -67,7 +68,7 @@ ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習   //新
         m6.put("code","06");
         m6.put("img",R.drawable.tn);
         Mylist.add(m6);
-        Myadapter adapt=new Myadapter(Mylist);
+        Myadapter adapt=new Myadapter(MainActivity.this,Mylist);
 
         lv.setAdapter(adapt);
 
