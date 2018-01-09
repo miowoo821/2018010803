@@ -20,8 +20,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv;
-    ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習
-    boolean chks[]=new boolean[6];
+ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習   //新增至Mylist.java     ,此頁依然要宣告Mylist
+//新增至Mylist.java          boolean chks[]=new boolean[6];
 
     //String str[]={"AA","BB","CC","DD","EE"};第一個練習
 
@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lv=(ListView)findViewById(R.id.listview);
-        Myadapter adapt=new Myadapter();
-        lv.setAdapter(adapt);
 
         HashMap<String,Object> m1=new HashMap<>();
         m1.put("CITY","台北");
@@ -69,10 +67,15 @@ public class MainActivity extends AppCompatActivity {
         m6.put("code","06");
         m6.put("img",R.drawable.tn);
         Mylist.add(m6);
+        Myadapter adapt=new Myadapter(Mylist);
+
+        lv.setAdapter(adapt);
 
 
     }
     //寫一個BaseAdapter的類別出來(BaseAdapter抽象類別，必須繼承必須實作
+
+/*新增至Mylist.java
     class Myadapter extends BaseAdapter{
 
 
@@ -122,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
             return v1;
         }
     }
+*/
 
     public void click1(View v){
         StringBuilder sb=new StringBuilder(); //StringBulider，把字串連在一起的方法，比直接+省資源
