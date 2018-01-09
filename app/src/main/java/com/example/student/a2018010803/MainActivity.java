@@ -68,7 +68,7 @@ ArrayList<Map<String,Object>> Mylist=new ArrayList<>();//第二個練習   //新
         m6.put("code","06");
         m6.put("img",R.drawable.tn);
         Mylist.add(m6);
-        Myadapter adapt=new Myadapter(MainActivity.this,Mylist);
+        Myadapter adapt=new Myadapter(MainActivity.this,Mylist,chks);
 
         lv.setAdapter(adapt);
 
